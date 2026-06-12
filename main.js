@@ -5,6 +5,7 @@ const sections = navLinks
   .map((link) => document.querySelector(link.getAttribute("href")))
   .filter(Boolean);
 const countdowns = [...document.querySelectorAll("[data-deadline]")];
+const speakerTitleToggles = [...document.querySelectorAll(".speaker-title-toggle")];
 
 function updateHeader() {
   header.classList.toggle("is-scrolled", window.scrollY > 24);
@@ -47,6 +48,21 @@ function updateCountdowns() {
   });
 }
 
+function toggleSpeakerDetail(button) {
+  const detail = document.getElementById(button.getAttribute("aria-controls"));
+  if (!detail) return;
+
+  const isOpen = button.getAttribute("aria-expanded") === "true";
+  button.setAttribute("aria-expanded", String(!isOpen));
+  detail.hidden = isOpen;
+
+  if (!isOpen) {
+    window.requestAnimationFrame(() => {
+      detail.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    });
+  }
+}
+
 navToggle.addEventListener("click", () => {
   const isOpen = header.classList.toggle("is-open");
   document.body.classList.toggle("nav-open", isOpen);
@@ -55,6 +71,10 @@ navToggle.addEventListener("click", () => {
 
 navLinks.forEach((link) => {
   link.addEventListener("click", closeNav);
+});
+
+speakerTitleToggles.forEach((button) => {
+  button.addEventListener("click", () => toggleSpeakerDetail(button));
 });
 
 const observer = new IntersectionObserver(

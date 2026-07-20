@@ -1,0 +1,46 @@
+/* Portrait-specific framing for source images with tight crops. */
+.speaker-grid img.speaker-photo-contain {
+  object-fit: contain;
+  object-position: center;
+  padding: 1.5mm;
+  background: #eef2f7;
+}
+
+.speaker-grid img.speaker-photo-yanlong {
+  object-fit: cover;
+  object-position: center 28%;
+  padding: 0;
+}
+
+.speaker-photo-frame {
+  width: 100%;
+  height: 31mm;
+  overflow: hidden;
+}
+
+.speaker-grid .speaker-photo-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.speaker-grid .speaker-photo-frame-zhao img {
+  transform: translateY(-7%) scale(1.16);
+  transform-origin: center center;
+}
+
+.organizer-grid img.organizer-photo-smaller {
+  width: 11mm;
+  height: 11mm;
+  margin: 0.75mm;
+  object-fit: contain;
+  background: #eef2f7;
+}
+
+.organizer-grid img.organizer-photo-jiatao {
+  object-position: center 35%;
+}
+
+.organizer-grid img.organizer-photo-xiangyu {
+  object-position: center 30%;
+}
